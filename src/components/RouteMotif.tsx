@@ -1,12 +1,17 @@
 import { motion, useReducedMotion } from 'motion/react'
+import type { PortfolioCopy } from '../data/portfolio'
 
-export function RouteMotif() {
+type RouteMotifProps = {
+  copy: PortfolioCopy['route']
+}
+
+export function RouteMotif({ copy }: RouteMotifProps) {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <div className="route-motif" aria-label="Europe to Latin America connection with São Paulo as academic experience">
+    <div className="route-motif" aria-label={copy.aria}>
       <div className="route-topline">
-        <span>Europe - Latin America axis</span>
+        <span>{copy.toplineLeft}</span>
         <span>MAD 40.4168 N / GRU 23.5505 S</span>
       </div>
       <div className="route-watermark madrid" aria-hidden="true">EU</div>
@@ -57,16 +62,16 @@ export function RouteMotif() {
         <circle className="route-node" cx="1005" cy="284" r="4" />
       </svg>
       <div className="route-label madrid">
-        <strong>EUROPE</strong>
-        <span>MADRID</span>
+        <strong>{copy.madridRegion}</strong>
+        <span>{copy.madridCity}</span>
       </div>
       <div className="route-label sao">
-        <strong>LATIN AMERICA</strong>
-        <span>SÃO PAULO / ACADEMIC EXPERIENCE</span>
+        <strong>{copy.latinRegion}</strong>
+        <span>{copy.saoContext}</span>
       </div>
       <div className="route-caption">
         <span>MAD</span>
-        <span>Regional ambition: Latin America / Existing anchor: São Paulo</span>
+        <span>{copy.caption}</span>
         <span>GRU</span>
       </div>
     </div>

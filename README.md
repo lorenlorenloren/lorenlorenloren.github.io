@@ -21,4 +21,4 @@ The Vite base path is configured for GitHub Pages user-site hosting at:
 https://lorenlorenloren.github.io/
 ```
 
-The CV links point to `public/Lorenzo_Martinez_Malvar_CV.pdf.pdf`.
+The CV links point to `public/Lorenzo_Martinez_Malvar_CV.pdf`.

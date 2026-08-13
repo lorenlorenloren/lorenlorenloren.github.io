@@ -3,19 +3,25 @@ import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/reac
 import { MagneticLink } from '../components/MagneticLink'
 import { ProjectVisual } from '../components/ProjectVisual'
 import { Reveal } from '../components/Reveal'
-import { projects } from '../data/portfolio'
+import { type PortfolioCopy, type PortfolioProject } from '../data/portfolio'
 import { setCursorLabel } from '../hooks/useCursorLabel'
 
-export function SelectedWork() {
+type SelectedWorkProps = {
+  copy: PortfolioCopy['work']
+  projects: readonly PortfolioProject[]
+  visuals: PortfolioCopy['visuals']
+}
+
+export function SelectedWork({ copy, projects, visuals }: SelectedWorkProps) {
   return (
     <section className="work-section section-pad" id="work" aria-labelledby="work-title">
       <Reveal className="section-heading editorial-heading">
-        <p className="eyebrow">Selected Work</p>
-        <h2 id="work-title">Research files.</h2>
+        <p className="eyebrow">{copy.eyebrow}</p>
+        <h2 id="work-title">{copy.heading}</h2>
       </Reveal>
       <div className="case-study-list">
         {projects.map((project) => (
-          <ProjectCase key={project.number} project={project} />
+          <ProjectCase key={project.number} project={project} copy={copy} visuals={visuals} />
         ))}
       </div>
     </section>
@@ -23,10 +29,12 @@ export function SelectedWork() {
 }
 
 type ProjectCaseProps = {
-  project: (typeof projects)[number]
+  project: PortfolioProject
+  copy: PortfolioCopy['work']
+  visuals: PortfolioCopy['visuals']
 }
 
-function ProjectCase({ project }: ProjectCaseProps) {
+function ProjectCase({ project, copy, visuals }: ProjectCaseProps) {
   const ref = useRef<HTMLElement>(null)
   const reduced = useReducedMotion()
   const rotateX = useMotionValue(0)
@@ -90,20 +98,20 @@ function ProjectCase({ project }: ProjectCaseProps) {
         <p className="case-thesis">{project.question}</p>
         <div className="memo-grid">
           <div>
-            <span>Approach</span>
+            <span>{copy.approach}</span>
             <p>{project.approach}</p>
           </div>
           <div>
-            <span>Output</span>
+            <span>{copy.output}</span>
             <p>{project.output}</p>
           </div>
         </div>
-        <div className="case-tags" aria-label={`${project.title} focus areas`}>
+        <div className="case-tags" aria-label={`${project.title} ${copy.focusAreas}`}>
           {project.tags.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        <div className="case-metrics" aria-label={`${project.title} methods`}>
+        <div className="case-metrics" aria-label={`${project.title} ${copy.methods}`}>
           {project.metrics.map((metric) => (
             <span key={metric}>{metric}</span>
           ))}
@@ -117,14 +125,14 @@ function ProjectCase({ project }: ProjectCaseProps) {
             cursorLabel="CODE"
             strength={0.16}
           >
-            Review file
+            {copy.review}
           </MagneticLink>
         ) : (
-          <span className="case-link muted">Internal professional work</span>
+          <span className="case-link muted">{copy.internal}</span>
         )}
       </div>
       <motion.div className="case-visual" style={{ x: visualX, y: visualY, scale: visualScale }}>
-        <ProjectVisual type={project.visual} />
+        <ProjectVisual type={project.visual} copy={visuals} />
       </motion.div>
     </motion.article>
   )

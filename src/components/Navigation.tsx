@@ -1,21 +1,20 @@
 import { MagneticLink } from './MagneticLink'
-import { links } from '../data/portfolio'
+import { type Language, locales, links, type PortfolioCopy } from '../data/portfolio'
 
-const navItems = [
-  ['Work', '#work'],
-  ['Experience', '#experience'],
-  ['About', '#about'],
-  ['Contact', '#contact'],
-] as const
+type NavigationProps = {
+  copy: PortfolioCopy['nav']
+  language: Language
+  onLanguageChange: (language: Language) => void
+}
 
-export function Navigation() {
+export function Navigation({ copy, language, onLanguageChange }: NavigationProps) {
   return (
     <header className="nav-wrap">
-      <MagneticLink className="brand-mark" href="#top" aria-label="Lorenzo Martínez Malvar home" strength={0.12}>
+      <MagneticLink className="brand-mark" href="#top" aria-label={copy.ariaHome} strength={0.12}>
         LMM
       </MagneticLink>
       <nav className="primary-nav" aria-label="Primary navigation">
-        {navItems.map(([label, href]) => (
+        {copy.primary.map(([label, href]) => (
           <MagneticLink key={label} href={href} strength={0.16}>
             {label}
           </MagneticLink>
@@ -32,6 +31,20 @@ export function Navigation() {
           GitHub
         </MagneticLink>
       </nav>
+      <label className="language-menu">
+        <span>{copy.language}</span>
+        <select
+          aria-label={copy.language}
+          value={language}
+          onChange={(event) => onLanguageChange(event.target.value as Language)}
+        >
+          {locales.map((locale) => (
+            <option key={locale.code} value={locale.code}>
+              {locale.label}
+            </option>
+          ))}
+        </select>
+      </label>
     </header>
   )
 }

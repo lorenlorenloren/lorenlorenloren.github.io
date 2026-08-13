@@ -1,21 +1,20 @@
 import { motion, useReducedMotion } from 'motion/react'
 import type { CSSProperties } from 'react'
-import type { projects } from '../data/portfolio'
-
-type VisualType = (typeof projects)[number]['visual']
+import type { PortfolioCopy, ProjectVisualType } from '../data/portfolio'
 
 type ProjectVisualProps = {
-  type: VisualType
+  type: ProjectVisualType
+  copy: PortfolioCopy['visuals']
 }
 
-export function ProjectVisual({ type }: ProjectVisualProps) {
-  if (type === 'yield') return <YieldCurve />
-  if (type === 'pipeline') return <DataPipeline />
-  if (type === 'portfolio') return <PortfolioAllocation />
-  return <RegimeChart />
+export function ProjectVisual({ type, copy }: ProjectVisualProps) {
+  if (type === 'yield') return <YieldCurve label={copy.yield} />
+  if (type === 'pipeline') return <DataPipeline nodes={copy.pipeline} index={copy.pipelineIndex} />
+  if (type === 'portfolio') return <PortfolioAllocation label={copy.allocation} />
+  return <RegimeChart legend={copy.regimes} />
 }
 
-function YieldCurve() {
+function YieldCurve({ label }: { label: string }) {
   const reduced = useReducedMotion()
 
   return (
@@ -37,14 +36,13 @@ function YieldCurve() {
         viewport={{ once: true }}
         transition={{ duration: 1.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
       />
-      <text x="48" y="278">Brazil rates as Latin America example / USD curve</text>
+      <text x="48" y="278">{label}</text>
     </svg>
   )
 }
 
-function DataPipeline() {
+function DataPipeline({ nodes, index }: { nodes: readonly string[]; index: string }) {
   const reduced = useReducedMotion()
-  const nodes = ['Source', 'API', 'Clean', 'Model', 'Brief']
 
   return (
     <div className="pipeline-visual" aria-hidden="true">
@@ -61,12 +59,12 @@ function DataPipeline() {
         </motion.div>
       ))}
       <div className="pipeline-thread" />
-      <div className="pipeline-index">15+ pharmaceutical data sources</div>
+      <div className="pipeline-index">{index}</div>
     </div>
   )
 }
 
-function PortfolioAllocation() {
+function PortfolioAllocation({ label }: { label: string }) {
   const reduced = useReducedMotion()
   const bars = [42, 28, 18, 12]
 
@@ -87,12 +85,12 @@ function PortfolioAllocation() {
           />
         ))}
       </div>
-      <p>Multi-strategy allocation</p>
+      <p>{label}</p>
     </div>
   )
 }
 
-function RegimeChart() {
+function RegimeChart({ legend }: { legend: readonly string[] }) {
   const reduced = useReducedMotion()
 
   return (
@@ -108,9 +106,9 @@ function RegimeChart() {
         />
       ))}
       <div className="regime-legend">
-        <span>Expansion</span>
-        <span>Stress</span>
-        <span>Transition</span>
+        {legend.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
       </div>
     </div>
   )
