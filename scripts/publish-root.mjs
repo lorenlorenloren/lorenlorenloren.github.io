@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -16,6 +16,20 @@ if (existsSync(publicAssets)) {
 
 mkdirSync(publicAssets, { recursive: true })
 copyFileSync(join(dist, 'index.html'), join(root, 'index.html'))
+
+for (const file of readdirSync(dist)) {
+  const source = join(dist, file)
+  if (
+    file === 'index.html' ||
+    file === 'assets' ||
+    file === 'Lorenzo_Martinez_Malvar_CV.pdf.pdf' ||
+    !statSync(source).isFile()
+  ) {
+    continue
+  }
+
+  copyFileSync(source, join(root, file))
+}
 
 const distAssets = join(dist, 'assets')
 for (const file of readdirSync(distAssets)) {
