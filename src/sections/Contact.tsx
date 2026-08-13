@@ -23,6 +23,9 @@ export function Contact({ copy }: ContactProps) {
           <MagneticLink href={links.github} target="_blank" rel="noreferrer" cursorLabel="CODE" strength={0.2}>
             GitHub
           </MagneticLink>
+          <MagneticLink href={links.medium} target="_blank" rel="noreferrer" cursorLabel="OPEN" strength={0.2}>
+            Medium
+          </MagneticLink>
           <MagneticLink href={links.cv} download cursorLabel="PDF" strength={0.2}>
             {copy.download}
           </MagneticLink>

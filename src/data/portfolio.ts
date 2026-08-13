@@ -11,7 +11,11 @@ export const locales: Array<{ code: Language; label: string; nativeName: string 
 export const links = {
   email: 'mailto:martinezmalvarinvesting@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lorenzo-martinez-malvar/',
+  linkedinActivity: 'https://www.linkedin.com/in/lorenzo-mart%C3%ADnez-malvar/recent-activity/all/',
+  goldAnalysis:
+    'https://www.linkedin.com/posts/lorenzo-mart%C3%ADnez-malvar_es-esta-la-compa%C3%B1%C3%ADa-de-oro-m%C3%A1s-infravalorada-activity-7391892096644874241-U_hw',
   github: 'https://github.com/lorenlorenloren',
+  medium: 'https://medium.com/@martinezfinance',
   cv: `${baseUrl}Lorenzo_Martinez_Malvar_CV.pdf`,
 }
 
@@ -43,12 +47,13 @@ export const portfolioCopy = {
     seo: {
       title: 'Lorenzo Martínez Malvar | Finance, Strategy and Automation',
       description:
-        'Lorenzo Martínez Malvar — Economics student focused on finance, strategy and automation, with international experience in Madrid and São Paulo and a growing professional focus on Latin America.',
+        'Lorenzo Martínez Malvar — Economics student focused on finance, strategy, automation and independent financial analysis, with international experience in Madrid and São Paulo and a growing professional focus on Latin America.',
     },
     nav: {
       ariaHome: 'Lorenzo Martínez Malvar home',
       primary: [
         ['Work', '#work'],
+        ['Analysis', '#analysis'],
         ['Experience', '#experience'],
         ['About', '#about'],
         ['Contact', '#contact'],
@@ -138,10 +143,51 @@ export const portfolioCopy = {
         metrics: ['HMM', 'Clustering', 'Signals'],
       },
     ],
+    analysis: {
+      eyebrow: 'Analysis & Publishing',
+      heading: 'Public research, written with an investor’s discipline.',
+      intro:
+        'Alongside academic and project work, I publish independent financial analysis on LinkedIn and interviews on Medium, using public data, valuation logic and market context to test investment ideas.',
+      primary: {
+        label: 'Highlighted note',
+        title: 'GoldMining Inc. valuation review',
+        subtitle:
+          'Independent equity analysis of a junior gold company trading at an extreme resource discount, followed by a post-analysis review after the stock more than doubled.',
+        points: ['22.2m AuEq resource base', 'EV/oz valuation framework', '+150% observed follow-up move'],
+        cta: 'Read LinkedIn analysis',
+      },
+      secondary: [
+        {
+          label: 'LinkedIn research',
+          title: 'Market notes and quantitative finance posts',
+          body:
+            'Posts covering Brazil-US fixed income carry, market regimes, portfolio allocation, derivatives concepts and macro-financial questions.',
+          cta: 'View activity',
+          href: links.linkedinActivity,
+          cursor: 'OPEN',
+        },
+        {
+          label: 'Medium archive',
+          title: '10 preguntas rápidas',
+          body:
+            'Interview series with investors and finance professionals, built around concise questions on markets, investing and professional judgement.',
+          cta: 'Open Medium',
+          href: links.medium,
+          cursor: 'OPEN',
+        },
+      ],
+    },
     experience: {
       eyebrow: 'Experience',
       heading: 'Finance education with direct exposure to Latin American markets.',
       items: [
+        {
+          institution: 'Independent Financial Analysis',
+          role: 'Published Equity and Market Research',
+          place: 'LinkedIn / Medium',
+          detail:
+            'Published independent notes on companies, markets and quantitative finance, including a GoldMining Inc. valuation review and follow-up, Brazil-US fixed income carry research and interviews with finance professionals.',
+        },
         {
           institution: 'Universidad Carlos III de Madrid',
           role: 'Bachelor of Economics',
@@ -197,12 +243,13 @@ export const portfolioCopy = {
     seo: {
       title: 'Lorenzo Martínez Malvar | Finanzas, estrategia y automatización',
       description:
-        'Lorenzo Martínez Malvar — estudiante de Economía centrado en finanzas, estrategia y automatización, con experiencia internacional en Madrid y São Paulo y un foco profesional creciente en América Latina.',
+        'Lorenzo Martínez Malvar — estudiante de Economía centrado en finanzas, estrategia, automatización y análisis financiero independiente, con experiencia internacional en Madrid y São Paulo y un foco profesional creciente en América Latina.',
     },
     nav: {
       ariaHome: 'Inicio de Lorenzo Martínez Malvar',
       primary: [
         ['Proyectos', '#work'],
+        ['Análisis', '#analysis'],
         ['Experiencia', '#experience'],
         ['Sobre mí', '#about'],
         ['Contacto', '#contact'],
@@ -292,10 +339,51 @@ export const portfolioCopy = {
         metrics: ['HMM', 'Clustering', 'Señales'],
       },
     ],
+    analysis: {
+      eyebrow: 'Análisis y publicación',
+      heading: 'Research público con disciplina de inversor.',
+      intro:
+        'Además de mi formación y proyectos, publico análisis financiero independiente en LinkedIn y entrevistas en Medium, usando datos públicos, lógica de valoración y contexto de mercado para contrastar ideas de inversión.',
+      primary: {
+        label: 'Análisis destacado',
+        title: 'Revisión de valoración de GoldMining Inc.',
+        subtitle:
+          'Análisis independiente de una junior minera de oro que cotizaba con un descuento extremo sobre recursos, seguido de una revisión posterior tras más que duplicar su precio.',
+        points: ['22,2m oz AuEq en recursos', 'Marco de valoración EV/oz', '+150% en el seguimiento'],
+        cta: 'Leer análisis en LinkedIn',
+      },
+      secondary: [
+        {
+          label: 'Research en LinkedIn',
+          title: 'Notas de mercado y finanzas cuantitativas',
+          body:
+            'Publicaciones sobre carry Brasil-EE. UU. en renta fija, regímenes de mercado, asignación de carteras, derivados y cuestiones macro-financieras.',
+          cta: 'Ver actividad',
+          href: links.linkedinActivity,
+          cursor: 'OPEN',
+        },
+        {
+          label: 'Archivo en Medium',
+          title: '10 preguntas rápidas',
+          body:
+            'Serie de entrevistas a inversores y profesionales financieros, con preguntas concisas sobre mercados, inversión y criterio profesional.',
+          cta: 'Abrir Medium',
+          href: links.medium,
+          cursor: 'OPEN',
+        },
+      ],
+    },
     experience: {
       eyebrow: 'Experiencia',
       heading: 'Formación financiera con exposición directa a mercados latinoamericanos.',
       items: [
+        {
+          institution: 'Análisis Financiero Independiente',
+          role: 'Research publicado sobre empresas y mercados',
+          place: 'LinkedIn / Medium',
+          detail:
+            'Publicación de notas independientes sobre compañías, mercados y finanzas cuantitativas, incluyendo una revisión de valoración de GoldMining Inc., research de carry Brasil-EE. UU. y entrevistas a profesionales financieros.',
+        },
         {
           institution: 'Universidad Carlos III de Madrid',
           role: 'Grado en Economía',
@@ -351,12 +439,13 @@ export const portfolioCopy = {
     seo: {
       title: 'Lorenzo Martínez Malvar | Finanças, estratégia e automação',
       description:
-        'Lorenzo Martínez Malvar — estudante de Economia focado em finanças, estratégia e automação, com experiência internacional em Madrid e São Paulo e foco profissional crescente na América Latina.',
+        'Lorenzo Martínez Malvar — estudante de Economia focado em finanças, estratégia, automação e análise financeira independente, com experiência internacional em Madrid e São Paulo e foco profissional crescente na América Latina.',
     },
     nav: {
       ariaHome: 'Início de Lorenzo Martínez Malvar',
       primary: [
         ['Projetos', '#work'],
+        ['Análise', '#analysis'],
         ['Experiência', '#experience'],
         ['Sobre', '#about'],
         ['Contato', '#contact'],
@@ -446,10 +535,51 @@ export const portfolioCopy = {
         metrics: ['HMM', 'Clustering', 'Sinais'],
       },
     ],
+    analysis: {
+      eyebrow: 'Análise e publicação',
+      heading: 'Pesquisa pública com disciplina de investidor.',
+      intro:
+        'Além da formação acadêmica e dos projetos, publico análises financeiras independentes no LinkedIn e entrevistas no Medium, usando dados públicos, lógica de valuation e contexto de mercado para testar ideias de investimento.',
+      primary: {
+        label: 'Nota em destaque',
+        title: 'Revisão de valuation da GoldMining Inc.',
+        subtitle:
+          'Análise independente de uma junior mineradora de ouro negociando com desconto extremo sobre recursos, seguida de uma revisão depois de a ação mais que dobrar.',
+        points: ['22,2m oz AuEq em recursos', 'Estrutura de valuation EV/oz', '+150% no acompanhamento'],
+        cta: 'Ler análise no LinkedIn',
+      },
+      secondary: [
+        {
+          label: 'Pesquisa no LinkedIn',
+          title: 'Notas de mercado e finanças quantitativas',
+          body:
+            'Publicações sobre carry Brasil-EUA em renda fixa, regimes de mercado, alocação de carteiras, derivativos e temas macrofinanceiros.',
+          cta: 'Ver atividade',
+          href: links.linkedinActivity,
+          cursor: 'OPEN',
+        },
+        {
+          label: 'Arquivo no Medium',
+          title: '10 perguntas rápidas',
+          body:
+            'Série de entrevistas com investidores e profissionais de finanças, estruturada em perguntas curtas sobre mercados, investimento e julgamento profissional.',
+          cta: 'Abrir Medium',
+          href: links.medium,
+          cursor: 'OPEN',
+        },
+      ],
+    },
     experience: {
       eyebrow: 'Experiência',
       heading: 'Formação financeira com exposição direta a mercados latino-americanos.',
       items: [
+        {
+          institution: 'Análise Financeira Independente',
+          role: 'Pesquisa publicada sobre empresas e mercados',
+          place: 'LinkedIn / Medium',
+          detail:
+            'Publicação de notas independentes sobre empresas, mercados e finanças quantitativas, incluindo uma revisão de valuation da GoldMining Inc., pesquisa de carry Brasil-EUA e entrevistas com profissionais de finanças.',
+        },
         {
           institution: 'Universidad Carlos III de Madrid',
           role: 'Bacharelado em Economia',

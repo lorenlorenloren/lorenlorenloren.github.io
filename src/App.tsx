@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { motion, useReducedMotion, type Variants } from 'motion/react'
 import { About } from './sections/About'
+import { Analysis } from './sections/Analysis'
 import { Contact } from './sections/Contact'
 import { Experience } from './sections/Experience'
 import { Hero } from './sections/Hero'
@@ -73,6 +74,7 @@ function App() {
       >
         <Hero copy={copy.hero} routeCopy={copy.route} />
         <SelectedWork copy={copy.work} projects={copy.projects} visuals={copy.visuals} />
+        <Analysis copy={copy.analysis} />
         <Experience copy={copy.experience} />
         <About copy={copy.about} />
         <Contact copy={copy.contact} />

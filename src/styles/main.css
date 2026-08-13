@@ -738,6 +738,109 @@ button:focus-visible {
   color: var(--quiet);
 }
 
+.analysis-intro {
+  max-width: 48rem;
+  margin: 1.35rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.22vw, 1.18rem);
+  line-height: 1.62;
+}
+
+.analysis-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(20rem, 0.72fr);
+  gap: clamp(2rem, 5.5vw, 7rem);
+  align-items: stretch;
+}
+
+.analysis-feature,
+.analysis-note {
+  position: relative;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 70%, transparent), transparent 72%),
+    transparent;
+}
+
+.analysis-feature {
+  display: grid;
+  min-height: clamp(30rem, 42vw, 42rem);
+  align-content: space-between;
+  padding: clamp(2rem, 4vw, 4rem) 0;
+}
+
+.analysis-feature::before {
+  position: absolute;
+  top: clamp(1.2rem, 2vw, 2rem);
+  right: 0;
+  color: color-mix(in srgb, var(--ink) 9%, transparent);
+  content: 'GLDG';
+  font-family: var(--serif);
+  font-size: clamp(6rem, 16vw, 16rem);
+  line-height: 0.8;
+  pointer-events: none;
+}
+
+.analysis-feature h3,
+.analysis-note h3 {
+  max-width: 13ch;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5.6vw, 6.6rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.analysis-feature p:not(.case-label),
+.analysis-note p:not(.case-label) {
+  max-width: 43rem;
+  margin: clamp(1.1rem, 2vw, 1.8rem) 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.58;
+}
+
+.analysis-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+}
+
+.analysis-metrics span {
+  display: grid;
+  min-height: 6.4rem;
+  align-items: end;
+  padding: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.analysis-secondary {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.analysis-note {
+  display: grid;
+  align-content: start;
+  min-height: 18rem;
+  padding: clamp(1.8rem, 3.4vw, 3.2rem) 0;
+}
+
+.analysis-note h3 {
+  max-width: 15ch;
+  font-size: clamp(2rem, 3.4vw, 3.9rem);
+}
+
 .case-visual {
   min-height: clamp(19rem, 26vw, 29rem);
   align-self: stretch;
@@ -1087,6 +1190,7 @@ button:focus-visible {
 @media (max-width: 1100px) {
   .hero-grid,
   .case-study,
+  .analysis-board,
   .about-grid {
     grid-template-columns: 1fr;
   }
@@ -1201,6 +1305,14 @@ button:focus-visible {
 
   .allocation-ring {
     width: 12rem;
+  }
+
+  .analysis-feature {
+    min-height: 30rem;
+  }
+
+  .analysis-metrics {
+    grid-template-columns: 1fr;
   }
 
   .regime-legend {

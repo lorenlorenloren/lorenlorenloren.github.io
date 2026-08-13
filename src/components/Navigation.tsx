@@ -30,6 +30,9 @@ export function Navigation({ copy, language, onLanguageChange }: NavigationProps
         <MagneticLink href={links.github} target="_blank" rel="noreferrer" cursorLabel="CODE" strength={0.18}>
           GitHub
         </MagneticLink>
+        <MagneticLink href={links.medium} target="_blank" rel="noreferrer" cursorLabel="OPEN" strength={0.18}>
+          Medium
+        </MagneticLink>
       </nav>
       <label className="language-menu">
         <span>{copy.language}</span>
