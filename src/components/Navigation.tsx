@@ -34,20 +34,23 @@ export function Navigation({ copy, language, onLanguageChange }: NavigationProps
           Medium
         </MagneticLink>
       </nav>
-      <label className="language-menu">
+      <div className="language-menu" role="group" aria-label={copy.language}>
         <span>{copy.language}</span>
-        <select
-          aria-label={copy.language}
-          value={language}
-          onChange={(event) => onLanguageChange(event.target.value as Language)}
-        >
+        <div className="language-switch">
           {locales.map((locale) => (
-            <option key={locale.code} value={locale.code}>
+            <button
+              type="button"
+              key={locale.code}
+              className={language === locale.code ? 'active' : ''}
+              aria-pressed={language === locale.code}
+              aria-label={locale.nativeName}
+              onClick={() => onLanguageChange(locale.code)}
+            >
               {locale.label}
-            </option>
+            </button>
           ))}
-        </select>
-      </label>
+        </div>
+      </div>
     </header>
   )
 }
